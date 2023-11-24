@@ -1,0 +1,41 @@
+﻿.title {
+    margin-left: 15px;
+}
+
+.titleText {
+    width: 20%;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.body {
+    margin-left: 15px;
+}
+
+.bodyText {
+    width: 80%;
+    height: 240px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.buttons {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.createBtn {
+    border: solid black 1px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    transition: 0.2s;
+    background-color: white;
+    padding: 8px 15px;
+    transition: 0.2s;
+}
+
+.createBtn:hover {
+    background-color: #F0F0F0;
+    transform: scale(1.01);
+}
+

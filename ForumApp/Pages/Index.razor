@@ -1,0 +1,50 @@
+﻿@page "/"
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@inject IPostService postService
+
+<h3>Forum Posts</h3>
+
+@if (posts == null)
+{
+}
+else if (!posts.Any())
+{
+    <p>No posts to display</p>
+}
+else
+{
+        @foreach (var post in posts)
+        {
+            <a class="removeUnderline" href="/posts/@post.Id">
+                <div class="posts">
+                    <div class="user">
+                        <p>@post.OwnerUsername</p>
+                    </div>
+                    <h3 class="user">@post.Title</h3>
+                    <div style="clear:both;"></div>
+                </div>
+            </a>
+        }
+}
+@if (!string.IsNullOrEmpty(msg))
+{
+    <label style="color: red">@msg</label>
+}
+
+@code {
+    private IEnumerable<Post>? posts;
+    private string msg = "";
+
+    protected override async Task OnInitializedAsync()    {
+        try
+        {
+            posts = await postService.GetAsync(null, null, null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+}
